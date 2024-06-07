@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
+        Schema::table('repetitions', function (Blueprint $table) {
+            $table->integer('tz_offset')->default(0)->after('start_at');
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::table('repetitions', function (Blueprint $table) {
+            $table->dropColumn('tz_offset');
+        });
     }
 };

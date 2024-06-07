@@ -6,8 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
+        if (Schema::hasTable('repetitions')) {
+            return;
+        }
+
         Schema::create('repetitions', function (Blueprint $table) {
             $table->id();
             $table->morphs('repeatable');
@@ -24,7 +31,10 @@ return new class extends Migration
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
         Schema::dropIfExists('repetitions');
     }

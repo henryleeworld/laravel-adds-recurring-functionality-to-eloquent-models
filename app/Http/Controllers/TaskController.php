@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 
 class TaskController extends Controller
 {
     public function show() 
     {
-        echo '今天的日期是：' . now()->toDateString() . PHP_EOL;
-        // Task::first()->repeat()->weekly()->on(['sunday', 'monday', 'tuesday']);
+        echo __('Today\'s date is: ') . now()->toDateString() . PHP_EOL;
+        Task::first()->repeat()->weekly()->on(['sunday', 'monday', 'tuesday']);
         $tasksTotal = Task::whereOccurresBetween(
-            Carbon::make('2023-05-01'),
-            Carbon::make('2023-05-30')
+            $startDate = Carbon::now()->startOfMonth(),
+            $endDate = Carbon::now()->endOfMonth()
         )->count();
-        echo '符合 2023/5/1 ~ 2023/5/30 總數：' . $tasksTotal . PHP_EOL;
+        echo __('The total tasks between :start_date and :end_date: ', ['start_date' => $startDate->toDateString(), 'end_date' => $endDate->toDateString()]) . $tasksTotal . PHP_EOL;
     }
 }

@@ -1,4 +1,4 @@
-# Laravel 10 Eloquent 模型加入重複功能
+# Laravel 11 Eloquent 模型加入重複功能
 
 引入 mohammedmanssour 的 laravel-recurring-models 套件來擴增 Eloquent 模型加入重複功能，無論需要簡單的每天、每週或每 N 天重複，還是更複雜的模式。
 
@@ -26,5 +26,5 @@ $ php artisan migrate --seed
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/EHct1li.png)
+![](https://i.imgur.com/YzGpDIq.png)
 > 取得任務在區間內的集合

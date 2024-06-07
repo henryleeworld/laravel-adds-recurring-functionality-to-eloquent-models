@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use MohammedManssour\LaravelRecurringModels\Contracts\Repeatable as RepeatableContract;
-use MohammedManssour\LaravelRecurringModels\Support\Repeatable;
+use MohammedManssour\LaravelRecurringModels\Concerns\Repeatable;
+use MohammedManssour\LaravelRecurringModels\Enums\RepetitionType;
 
 class Task extends Model implements RepeatableContract
 {
@@ -26,7 +27,7 @@ class Task extends Model implements RepeatableContract
     /**
      * define the base date that we would use to calculate repetition start_at
      */
-    public function startsAt(): Carbon
+    public function repetitionBaseDate(?RepetitionType $type = null): Carbon
     {
         return now();
     }

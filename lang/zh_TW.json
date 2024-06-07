@@ -1,0 +1,4 @@
+{
+    "The total tasks between :start_date and :end_date: ": "符合 :start_date ~ :end_date 任務總數：",
+    "Today's date is: ": "今天的日期是："
+}
